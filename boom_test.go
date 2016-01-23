@@ -35,3 +35,19 @@ func TestInternalServerError(t *testing.T) {
 		t.Error("Expected Payload to be nil but got", err.Payload, "instead")
 	}
 }
+
+func TestBadRequest(t *testing.T) {
+	err := BadRequest("Bad Request m8", nil)
+
+	if err.StatusCode != 400 {
+		t.Error("Expected status code 401 but got", err.StatusCode, "instead")
+	}
+
+	if err.Message != "Bad Request m8" {
+		t.Error("Expected message 'Bad Request m8' but got", err.Message, "instead")
+	}
+
+	if err.Payload != nil {
+		t.Error("Expected Payload to be nil but got", err.Payload, "instead")
+	}
+}

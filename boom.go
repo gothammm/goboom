@@ -46,3 +46,10 @@ func InternalServerError(message string, data interface{}) *Error {
 	}
 	return Create(500, message, data)
 }
+
+func BadRequest(message string, data interface{}) *Error {
+	if message == "" {
+		message = Error_401
+	}
+	return Create(400, message, data)
+}

@@ -53,3 +53,10 @@ func BadRequest(message string, data interface{}) *Error {
 	}
 	return Create(400, message, data)
 }
+
+func Unauthorized(message string, data interface{}) *Error {
+	if message == "" {
+		message = Error_401
+	}
+	return Create(401, message, data)
+}

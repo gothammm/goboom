@@ -1,6 +1,8 @@
 package goboom
 
-import "encoding/json"
+import (
+	"encoding/json"
+)
 
 type Error struct {
 	StatusCode int `json:"code,omitempty"`
@@ -18,7 +20,6 @@ func (r Error) Json() []byte {
 	if jsonString != nil {
 		return jsonString
 	}
-
 	return []byte("")
 }
 

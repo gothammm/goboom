@@ -60,3 +60,10 @@ func Unauthorized(message string, data interface{}) *Error {
 	}
 	return Create(401, message, data)
 }
+
+func Wrap(err error, statusCode int, data interface{}) {
+	if statusCode == 0 {
+		statusCode = 500
+	}
+	return Create(statusCode, err.Error(), data)
+}

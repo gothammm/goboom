@@ -62,7 +62,7 @@ func Unauthorized(message string, data interface{}) *Error {
 	return Create(401, message, data)
 }
 
-func Wrap(err error, statusCode int, data interface{}) {
+func Wrap(err error, statusCode int, data interface{}) *Error {
 	if statusCode == 0 {
 		statusCode = 500
 	}

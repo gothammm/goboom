@@ -40,11 +40,27 @@ func TestBadRequest(t *testing.T) {
 	err := BadRequest("Bad Request m8", nil)
 
 	if err.StatusCode != 400 {
-		t.Error("Expected status code 401 but got", err.StatusCode, "instead")
+		t.Error("Expected status code 400 but got", err.StatusCode, "instead")
 	}
 
 	if err.Message != "Bad Request m8" {
 		t.Error("Expected message 'Bad Request m8' but got", err.Message, "instead")
+	}
+
+	if err.Payload != nil {
+		t.Error("Expected Payload to be nil but got", err.Payload, "instead")
+	}
+}
+
+func TestUnauthorized(t *testing.T) {
+	err := Unauthorized("You shall not pass", nil)
+
+	if err.StatusCode != 401 {
+		t.Error("Expected status code 401 but got", err.StatusCode, "instead")
+	}
+
+	if err.Message != "You shall not pass" {
+		t.Error("Expected message 'You shall not pass' but got", err.Message, "instead")
 	}
 
 	if err.Payload != nil {
